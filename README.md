@@ -10,5 +10,5 @@ RandomPicGenerator to generate random pic for DP on social media or wallpaper fo
 Install the dependencies for the project
 pip install --user -r requirements.txt 
 
-####Enjoy!
+Enjoy!
     
