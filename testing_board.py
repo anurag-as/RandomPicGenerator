@@ -37,4 +37,4 @@ def save_image(image):
     :param image: Image object (PIL)
     :return: None
     """
-    image.save("image.jpg", "JPEG")
+    image.save("random_art.jpg", "JPEG")
