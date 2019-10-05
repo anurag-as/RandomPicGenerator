@@ -1,16 +1,46 @@
 import numpy
 from PIL import Image
 
-data = numpy.zeros((1024, 1024, 3), dtype=numpy.uint8)
-data[512, 511] = [255, 0, 0]
-data[512, 512] = [0, 255, 0]
-data[512, 513] = [0, 0, 255]
 
-for i in range(0,255):
-    for j in range(1024):
-        data[i][j] = [255, 0, 0]
-        data[i+256][j] = [0, 255, 0]
-        data[i+512][j] = [0, 0, 255]
+def initialize_matrix(board_size):
+    """
+    Initialize image matrix of pixels
+    :param board_size: Size of board
+    :return: data matrix
+    """
+    data = numpy.zeros((board_size, board_size, 3), dtype=numpy.uint8)
+    return data
 
-image = Image.fromarray(data)
-image.show()
+
+def form_image(data):
+    """
+    Form the image from the pixels
+    :param data: data pixels
+    :return: Image
+    """
+    image = Image.fromarray(data)
+    return image
+
+
+def show_image(image):
+    """
+    Function to display the image
+    :param image: Image object (PIL)
+    :return: None
+    """
+    image.show()
+
+
+def save_image(image):
+    """
+    Save the image in jpg format
+    :param image: Image object (PIL)
+    :return: None
+    """
+    image.save("image.jpg", "JPEG")
+
+
+d = initialize_matrix(1024)
+f = form_image(d)
+show_image(f)
+save_image(f)

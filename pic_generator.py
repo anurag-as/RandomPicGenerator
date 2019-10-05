@@ -46,12 +46,3 @@ def block_coordinates(sequence, size):
     for block in sequence:
         positions.add(one_two(block, size))
     return positions
-
-
-"""
-Testing parameters
-size = 10
-number = number_random(size)
-sequence = particular_blocks(number, size)
-print(block_coordinates(sequence, size))
-"""
