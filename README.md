@@ -7,7 +7,7 @@ Run the code
 python colouring_board.py
 ```
 Input a number for resolution in the GUI box
-The image is automatically saved as _random_art.jpg_
+The image is automatically saved as **random_art.jpg**
     
 ## Starting off
 Install the dependencies for the project<br>
