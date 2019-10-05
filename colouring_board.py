@@ -1,6 +1,6 @@
-from testing_board import *
-from board_size_choose import *
-from pic_generator import *
+from utils.testing_board import *
+from utils.board_size_choose import *
+from utils.pic_generator import *
 import pymsgbox
 
 colours = {'peach': [255, 251, 143], 'olive': [40, 250, 106]}
@@ -41,5 +41,5 @@ if __name__ == "__main__":
     coloured_data = colour_board(data, block_coordinate, board_size, intervals)
     formed_image = form_image(coloured_data)
     show_image(formed_image)
-    save_image(formed_image)
-    print("Image has been saved as random_art.jpg")
+    filename = save_image(formed_image)
+    print("Image has been saved in images folder as %s" % filename)
