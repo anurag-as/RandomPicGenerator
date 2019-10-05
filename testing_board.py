@@ -38,9 +38,3 @@ def save_image(image):
     :return: None
     """
     image.save("image.jpg", "JPEG")
-
-
-d = initialize_matrix(1024)
-f = form_image(d)
-show_image(f)
-save_image(f)
