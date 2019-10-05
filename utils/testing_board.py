@@ -1,5 +1,6 @@
 import numpy
 from PIL import Image
+import os
 
 
 def initialize_matrix(board_size):
@@ -31,10 +32,23 @@ def show_image(image):
     image.show()
 
 
+def next_path(path_pattern):
+    i = 1
+    while os.path.exists(path_pattern % i):
+        i = i * 2
+    a, b = (i // 2, i)
+    while a + 1 < b:
+        c = (a + b) // 2
+        a, b = (c, b) if os.path.exists(path_pattern % c) else (a, c)
+    return path_pattern % b
+
+
 def save_image(image):
     """
     Save the image in jpg format
     :param image: Image object (PIL)
     :return: None
     """
-    image.save("random_art.jpg", "JPEG")
+    file_name = next_path(".//images//random_art_%s.jpg")
+    image.save(file_name, "JPEG")
+    return file_name
