@@ -1,7 +1,7 @@
 from utils.testing_board import *
 from utils.board_size_choose import *
 from utils.pic_generator import *
-import pymsgbox
+from easygui import multenterbox, msgbox
 import random
 
 """
@@ -48,18 +48,35 @@ def colour_board(image_data, block_coords, board, interval_size):
 if __name__ == "__main__":
     while True:
         try:
-            input_size = int(pymsgbox.prompt('Image size?', default='5'))
+            """
+            :param Resolution: Image complexity
+            :param How many images: Number of random art images to be generated
+            """
+            fieldNames = ["Resolution(integer)", "How many images?"]
+            fieldValues = list(map(int, list(multenterbox('How do you want to customize?',
+                                                          title='RandomPicGenerator', fields=fieldNames, values=['5', '1']))))
+            input_size = fieldValues[0]
+            count_images = fieldValues[1]
             break
         except ValueError:
-            pymsgbox.alert("Error, please input a valid size")
-    board_size = choose_board_size(input_size)
-    intervals = get_intervals(board_size, input_size)
-    data = initialize_matrix(board_size)
-    number = number_random(input_size)
-    blocks = particular_blocks(number, input_size)
-    block_coordinate = block_coordinates(blocks, input_size)
-    coloured_data = colour_board(data, block_coordinate, board_size, intervals)
-    formed_image = form_image(coloured_data)
-    show_image(formed_image)
-    filename = save_image(formed_image)
-    print("Image has been saved in images folder as %s" % filename)
+            """
+            Repeat loop till valid values are entered for resolution and count of images
+            """
+            msgbox("Error, please input a valid size and/or number of images.")
+    board_size = choose_board_size(input_size)  # choosing number of pixels on the board
+    intervals = get_intervals(board_size, input_size)  # interval for colour changing (pixels)
+    for each_image in range(count_images):
+        data = initialize_matrix(board_size)
+        number = number_random(input_size)
+        blocks = particular_blocks(number, input_size)
+        block_coordinate = block_coordinates(blocks, input_size)
+        coloured_data = colour_board(data, block_coordinate, board_size, intervals)
+        formed_image = form_image(coloured_data)
+        if count_images == 1:
+            """
+            If only 1 image has been generated, it is shown. For more number of images generated, it is saved without
+            being displayed to the user.
+            """
+            show_image(formed_image)
+        filename = save_image(formed_image)
+        print("Image has been saved in images folder as %s" % filename)
