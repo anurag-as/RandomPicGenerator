@@ -1,6 +1,8 @@
 # RandomPicGenerator
 RandomPicGenerator to generate random pic for DP on social media or wallpaper for your phone.
 
+![Screenshot](https://raw.githubusercontent.com/sampathanurag/RandomPicGenerator/master/Project%20Screenshots/ProjectGeneratedImages.png)
+
 ## Usage example: 
 Run the code
 ```
